@@ -19,7 +19,7 @@ const toughtsRoutes = require('./routes/toughtsRoutes')
 const ToughtController = require('./controllers/ToughtController')
 
 //template engine
-app.engine('handelbars', exphbs.engine())
+app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
 
 //receber resposta do body
