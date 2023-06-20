@@ -14,6 +14,7 @@ const User = require('./models/User')
 
 //import routes
 const toughtsRoutes = require('./routes/toughtsRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 //import Controller
 const ToughtController = require('./controllers/ToughtController')
@@ -44,7 +45,7 @@ app.use(
         cookie: {
            secure: false,
            masAge: 360000, 
-           expires: new Date(Date.now() + 360000),
+          
            httponly: true
         }
     }),
@@ -54,7 +55,7 @@ app.use(
 app.use(flash())
 
 //public path
-app.use(express.static('public'))
+app.use(express.static(__dirname + '/public'))
 
 //set session to res
 app.use((req, res, next) => {
@@ -66,6 +67,7 @@ app.use((req, res, next) => {
 
 //Routes
 app.use('/toughts', toughtsRoutes)
+app.use('/', authRoutes)
 app.get('/', ToughtController.showToughts)
 
 conn
